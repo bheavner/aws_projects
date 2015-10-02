@@ -10,7 +10,7 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>Aws projects by bheavner</title>
+    <title>Dockerized R studio/bioconductor on AWS.</title>
   </head>
 
   <body>
@@ -36,10 +36,50 @@
 </p>
 
 <p>How I'm doing it:
-<ul>
-<li><a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/get-set-up-for-amazon-ecs.html#create-an-iam-role">Make IAM role for container instances and services</a> (automatically done for me when using the console).</li>
+<dl>
+<dt><a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/get-set-up-for-amazon-ecs.html#create-an-iam-role">Make IAM role for container instances and services</a> (automatically done for me when using the console).</dt>
 
+<dt>Run the PHP example container from <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html">AWS</a></dt>
+<dd>
+<ul>
+<li>use starcluster to start basic linux instance: <code>starcluster -c http://bheavner.github.io/testconfig/ start -c tiny benCluster</code></li>
+<li>log in to master node: <code>starcluster -c http://bheavner.github.io/testconfig/ sshmaster benCluster</code></li>
+<li> update packages, grab docker: 
+<br><code>sudo yum update -y
+<br>sudo yum install -y docker
+<br>sudo service docker start
+<br>sudo usermod -a -G docker ec2-user</code>
+<br> Log out and log back in again to pick up the new docker group permissions.
+
+... and of course the starcluster image doesn't have yum... it's a ubuntu running 3.8.0-35-generic kernel. So have to update kernel and apt to get docker running.
 </ul>
+</dd>
+
+<dt>Upgrade kernal and apt</dt>
+<dd>
+<ul>
+<li><code>sudo apt-get update</code></li>
+<li><code> sudo apt-get install linux-image-generic-lts-trusty</code></li>
+</ul>
+</dd>
+
+<dt> give up on starcluster approach.</dt>
+<dd> The latest public Starcluster AMI includes Ubuntu 13.04, which isn't supported by Docker. If we just want to run Rstudio server, we don't need clustercfn or starcluster. Instead, I'll just fire up a linux instance without the cluster management stuff.
+</dl>
+</p>
+
+<p>So, demo with a little instance:
+<dl>
+<dt> Launch a t2.micro Amazon Linux instance</dt>
+<dd> Follow <a href = "http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launching-instance.html">these instructions</a>.
+
+<dt>now Run the PHP example container from <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html">AWS</a></dt>
+<dd>And it behaves as expected!</dd>
+
+<dt> Try the R Studio server/bioconductor package</dt>
+<dd> Follow <a href = "https://www.bioconductor.org/help/docker/"> the bioconductor instructions</a></dd>
+
+</dl>
 </p>
 
 <h3>
