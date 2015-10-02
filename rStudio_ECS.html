@@ -22,22 +22,30 @@
           <h2>Working through infrastructure stuff</h2>
         </header>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/bheavner/aws_projects/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/bheavner/aws_projects/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/bheavner/aws_projects" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
         <section id="main_content">
           <h3>
 <a id="r-studiobioconductor-on-aws" class="anchor" href="#r-studiobioconductor-on-aws" aria-hidden="true"><span class="octicon octicon-link"></span></a>R studio/bioconductor on AWS.</h3>
 
+<p>The goal is to learn AWS container service so I can run <a href = "https://www.bioconductor.org/help/docker/">Bioconductor's Docker containerized</a> R Studio Server on an AMI and work from anywhere.</p>
+
+<p>Some reading to do:
+<ul>
+<li><a href = "https://blogs.aws.amazon.com/bigdata/post/Tx3IJSB6BMHWZE5/Running-R-on-AWS">Running R on AWS</a></li>
+<li><a href = "http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_GetStarted.html">Getting Started with Amazon ECS</a></li>
+</ul>
+</p>
+
+<p>How I'm doing it:
+<ul>
+<li><a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/get-set-up-for-amazon-ecs.html#create-an-iam-role">Make IAM role for container instances and services</a> (automatically done for me when using the console).</li>
+
+</ul>
+</p>
+
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
-<p>These are pretty much <a href="https://github.com/bheavner" class="user-mention">@bheavner</a> 's notes. </p>
+<p>These are pretty much <a href="https://github.com/bheavner" class="user-mention">@bheavner</a>'s notes. </p>
         </section>
 
         <footer>
