@@ -68,7 +68,8 @@
 </dl>
 </p>
 
-<p>So, demo with a little instance:
+<h3><a id="r-studiobioconductor-on-aws" class="anchor" href="#r-studiobioconduct    or-on-aws" aria-hidden="true"><span class="octicon octicon-link"></span></a>So, demo with a little instance:</h3>
+<p>
 <dl>
 <dt> Launch a t2.micro Amazon Linux instance</dt>
 <dd> Follow <a href = "http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launching-instance.html">these instructions</a>.
@@ -80,7 +81,16 @@
 <dd> Follow <a href = "https://www.bioconductor.org/help/docker/"> the bioconductor instructions</a></dd>
 
 </dl>
+
+<p>Complicate it a bit - fire up the R Studio server with a local volume available to the container for read/write:
+<dl>
+<dt>We'll need to change permissions so container isn't running as root</dt>
+<dd>There are instructions at the <a href="https://github.com/rocker-org/rocker/wiki/Sharing-files-with-host-machine">Rocker Documentation Site</a></dd>
+</dl>
 </p>
+
+<h3><a id="r-studiobioconductor-on-aws" class="anchor" href="#r-studiobiocon    duct    or-on-aws" aria-hidden="true"><span class="octicon octicon-link"></s    pan></a>Make a task definition and register it with ECS:</h3>
+
 
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
